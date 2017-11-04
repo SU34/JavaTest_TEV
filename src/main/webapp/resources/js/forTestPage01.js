@@ -4,7 +4,8 @@ $(function () {
 
 function updateDataTable() {
     $.ajax({
-        url: "/task01/rest/testInterval/all",
+        // url: "/task01/rest/testInterval/all",
+        url: "/rest/testInterval/all",
         type: "GET",
         success: function (data) {
             console.log(new Date($.now()) + ": testIntervalTable is updated !");
