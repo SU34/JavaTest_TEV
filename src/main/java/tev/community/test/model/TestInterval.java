@@ -1,6 +1,5 @@
 package tev.community.test.model;
 
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 
@@ -28,11 +27,9 @@ public class TestInterval {
     private Integer id;
 
     @Column(name = "start_i", nullable = false)
-    @NotNull
     private Integer startI;
 
     @Column(name = "end_i", nullable = false)
-    @NotNull
     private Integer endI;
 
     public Integer getStartI() {
