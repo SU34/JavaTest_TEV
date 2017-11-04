@@ -7,6 +7,7 @@ import tev.community.test.TestIntervalRepository;
 import tev.community.test.model.TestInterval;
 import tev.community.test.utils.PsevdoLogger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,5 +46,25 @@ public class MainRestController {
     public void saveTestInterval(@RequestBody TestInterval testInterval) {
         log.info("rest: testInterval/save");
         repository.add(testInterval);
+    }
+
+    @GetMapping("/runThreadDelete")
+    public void startThreadDelete() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //TODO:startThreadDelete
+            }
+        }).start();
+    }
+
+    @GetMapping("/runThreadCreate")
+    public void startThreadCreate() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //TODO:startThreadCreate
+            }
+        }).start();
     }
 }
