@@ -132,6 +132,11 @@
             <version>${jackson-json.version}</version>
         </dependency>
         <!-- -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
 
         <!-- Webjars (static dependencies distributed as JAR files) -->
         <dependency>
@@ -169,11 +174,7 @@
             <artifactId>plexus-utils</artifactId>
             <version>1.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.13</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts-taglib</artifactId>
@@ -195,7 +196,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.3.9</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
