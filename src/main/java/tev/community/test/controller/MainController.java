@@ -29,12 +29,6 @@ public class MainController {
 
     @GetMapping("/testPage01")
     public String showTestPage01(ModelMap model) {
-        System.out.println(CrudTestIntervarRepositoryImpl.getAll());
-        TestInterval testInterval = new TestInterval(23,33);
-        CrudTestIntervarRepositoryImpl.add(testInterval);
-        CrudTestIntervarRepositoryImpl.delete(2);
-        System.out.println(CrudTestIntervarRepositoryImpl.getAll());
-
         return "/testPage01";
     }
 }
