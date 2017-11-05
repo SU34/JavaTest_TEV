@@ -16,4 +16,6 @@ public interface TestIntervalRepository {
     TestInterval add(TestInterval testInterval);
 
     boolean delete(int id);
+
+    List<Integer> getIds();
 }

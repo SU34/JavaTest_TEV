@@ -27,7 +27,10 @@ public interface CrudTestIntervalRepository extends JpaRepository<TestInterval, 
 
     @Transactional
     @Modifying
-    @Query("delete from TestInterval tt where tt.id = :id")
+    @Query(value = "delete from TestInterval tt where tt.id = :id")
     int delete(@Param("id") int id);
+
+    @Query(value = "select tt.id from TestInterval tt")
+    List<Integer> getIdList();
 
 }

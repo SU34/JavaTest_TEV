@@ -4,7 +4,6 @@ $(function () {
 
 function updateDataTable() {
     $.ajax({
-        // url: "/task01/rest/testInterval/all",
         url: "/rest/testInterval/all",
         type: "GET",
         success: function (data) {
@@ -32,3 +31,11 @@ var testIntervalTableApi = $("#testIntervalTable").DataTable({
         }
     ]
 });
+
+function threadToDeleteRun() {
+    $.post("/rest/addThreadDelete");
+}
+
+function threadToCreateRun() {
+    $.post("/rest/addThreadCreate");
+}

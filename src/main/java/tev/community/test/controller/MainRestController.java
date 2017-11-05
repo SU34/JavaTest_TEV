@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import tev.community.test.TestIntervalRepository;
 import tev.community.test.model.TestInterval;
 import tev.community.test.utils.PsevdoLogger;
+import tev.community.test.utils.TestIntervalUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/rest")
 public class MainRestController {
+    private static final long TIME_SLEEP = 1000;
+    private static final int COUNT_OPERATIONS_IN_THREAD = 10;
+
     private static final PsevdoLogger log = new PsevdoLogger();
 
     private final TestIntervalRepository repository;
@@ -48,22 +51,45 @@ public class MainRestController {
         repository.add(testInterval);
     }
 
-    @GetMapping("/runThreadDelete")
+    @PostMapping("/addThreadDelete")
     public void startThreadDelete() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                //TODO:startThreadDelete
+                log.info("startThreadDelete - is started");
+                int lifeThread = 0;
+                while (lifeThread <= COUNT_OPERATIONS_IN_THREAD) {
+                    lifeThread++;
+                    try {
+                        Integer id = TestIntervalUtil.getRandomId(repository);
+                        repository.delete(id);
+                        Thread.sleep(TIME_SLEEP);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                log.info("startThreadDelete - is ended");
             }
         }).start();
     }
 
-    @GetMapping("/runThreadCreate")
+    @PostMapping("/addThreadCreate")
     public void startThreadCreate() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                //TODO:startThreadCreate
+                log.info("startThreadCreate - is started");
+                int lifeThread = 0;
+                while (lifeThread <= COUNT_OPERATIONS_IN_THREAD) {
+                    lifeThread++;
+                    try {
+                        repository.add(TestIntervalUtil.getRandomTestInterval());
+                        Thread.sleep(TIME_SLEEP);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                log.info("startThreadCreate - is ended");
             }
         }).start();
     }

@@ -19,7 +19,9 @@
         </thead>
         <tbody>
         <tr>
-            <td><a href="${pageContext.request.contextPath}/testPage01">move to testPage01</a></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/testPage01">move to testPage01</a>
+            </td>
         </tr>
         </tbody>
     </table>

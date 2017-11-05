@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import tev.community.test.TestIntervalRepository;
 import tev.community.test.model.TestInterval;
+import tev.community.test.utils.PsevdoLogger;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Repository
 public class CrudTestIntervarRepositoryImpl implements TestIntervalRepository {
+    private static final PsevdoLogger log = new PsevdoLogger();
 
     @Autowired
     private CrudTestIntervalRepository crudTestIntervalRepository;
@@ -28,12 +30,23 @@ public class CrudTestIntervarRepositoryImpl implements TestIntervalRepository {
 
     @Override
     public TestInterval add(TestInterval testInterval) {
-        return crudTestIntervalRepository.save(testInterval);
+        TestInterval save = crudTestIntervalRepository.save(testInterval);
+        String message = (save != null) ? "created:" : "NOT CREATED!:";
+        log.info(message + save);
+        return save;
     }
 
     @Override
     public boolean delete(int id) {
-        return crudTestIntervalRepository.delete(id) != 0;
+        boolean isDeleted = (crudTestIntervalRepository.delete(id)) != 0;
+        String message = isDeleted ? "deleted:" : "NOT DELETED!:";
+        log.info(message + "testInterval with id=" + id);
+        return isDeleted;
+    }
+
+    @Override
+    public List<Integer> getIds() {
+        return crudTestIntervalRepository.getIdList();
     }
 
 }

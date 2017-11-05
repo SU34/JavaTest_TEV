@@ -18,13 +18,15 @@
 
 
     <!-- my scripts-->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/forTestPage01.js"
-            defer></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/forTestPage01.js" defer></script>
     <!-- -->
 
     <title>testPage01</title>
 </head>
 <body>
+
+<button type="button" class="btn btn-primary" onclick="threadToDeleteRun()">добавить поток на периодические удаления</button>
+<button type="button" class="btn btn-primary" onclick="threadToCreateRun()">добавить поток на периодические создания</button>
 
 <!--datatable table -->
 <table id="testIntervalTable" class="compact table-bordered3" width="500" align="center">
